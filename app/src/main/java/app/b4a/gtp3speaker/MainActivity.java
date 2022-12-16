@@ -39,7 +39,7 @@ import app.b4a.gtp3speaker.Thread.EtriConnectionThread;
 public class MainActivity extends AppCompatActivity {
 
     //
-    private String openApiURL = "http://aiopen.etri.re.kr:8000/WiseASR/Recognition";
+    private String openApiURL = "https://speech.googleapis.com/v1/speech:recognize";
     private String accessKey = "93a4818d-88aa-4cd6-a993-489025e1e3a2";    // 발급받은 API Key
     private String languageCode = "korean";     // 언어 코드
 
@@ -133,12 +133,18 @@ public class MainActivity extends AppCompatActivity {
 
         String base64File = fileToBase64(fileName);
         Map<String, Object> request = new HashMap<>();
-        Map<String, String> argument = new HashMap<>();
+        Map<String, String> config = new HashMap<>();
+        Map<String, String> audio = new HashMap<>();
 
-        argument.put("language_code", languageCode);
-        argument.put("audio", base64File);
+        config.put("languageCode", );
+        config.put("encoding",);
+        config.put("sampleRateHertz",);
+        config.put("enableTimeWordOffsets",);
 
-        request.put("argument", argument);
+        audio.put("content", base64File);
+
+        request.put("config", config);
+        request.put("audio", audio);
 
         Log.d("Main", "Etri start");
         EtriConnectionThread etriThread = new EtriConnectionThread();
